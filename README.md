@@ -8,11 +8,10 @@ A firefox plugin that integrate Twitch chat in web based games for a more intera
 | [Scrandle](https://scrandle.com/) | ✅ | Display messages from Twitch chat over the choices based on simple word filter (left/right, 1/2)|
 
 ## Installation
-1. Go to the [Releases](https://github.com/yourusername/stools/releases) page.
-2. Download the latest version of the plugin (xpi  file) or [click here](PLACEHOLDER TO AUTOMATE ON RELEASE)
-3. Open Firefox and go to the Add-ons page (you can do this by typing `about:addons` in the address bar, or from the menu: `Menu > Add-ons and themes`).
-4. Click on the gear icon and select "Install Add-on From File..."
-5. Choose the downloaded file and install it.
+1. [Download the latest release](https://github.com/fromscratchengineer/stools/releases/latest/download/stools.xpi) (`.xpi` file).
+2. Open Firefox and go to the Add-ons page (`about:addons`, or `Menu > Add-ons and themes`).
+3. Click on the gear icon and select "Install Add-on From File..."
+4. Choose the downloaded file and install it.
 
 ## Setup
 1. Go to the add-ons page (`about:addons`, or `Menu > Add-ons and themes`).
