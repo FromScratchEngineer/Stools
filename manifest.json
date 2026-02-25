@@ -17,7 +17,8 @@
     }
   },
   "icons": {
-    "48": "assets/icons/stool.svg"
+    "48": "assets/icons/stool-48.png",
+    "96": "assets/icons/stool-96.png"
   },
   "options_ui": {
     "page": "options/options.html",

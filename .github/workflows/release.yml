@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+      - name: Build ZIP
+        run: |
+          zip -r stools-${{ steps.version.outputs.version }}.zip . \
+            --exclude "*.git*" \
+            --exclude "*.md" \
+            --exclude ".github/*" \
+            --exclude "build/*" \
+            --exclude "notes.md" \
+            --exclude "package.sh" \
+            --exclude "DISTRIBUTION.md" \
+            --exclude "test.js"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: stools-${{ steps.version.outputs.version }}.zip
+          generate_release_notes: false
+          draft: false
+
+      - name: Update updates.json on gh-pages
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          XPI_URL="https://github.com/fromscratchengineer/stools/releases/download/v${VERSION}/stools-${VERSION}.xpi"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin gh-pages
+          git checkout gh-pages
+
+          jq --arg v "$VERSION" --arg url "$XPI_URL" \
+            '.addons["dev@xorxnor.com"].updates |= if any(.[]; .version == $v) then . else [{"version": $v, "update_link": $url}] + . end' \
+            updates.json > updates.json.tmp && mv updates.json.tmp updates.json
+
+          git add updates.json
+          git commit -m "v${VERSION}"
+          git push origin gh-pages
