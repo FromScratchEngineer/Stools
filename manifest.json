@@ -1,0 +1,101 @@
+{
+  "manifest_version": 3,
+  "name": "Stools",
+  "version": "1.0",
+  "description": "Streamer tools — connect Twitch chat with word games.",
+  "permissions": [
+    "storage"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dev@xorxnor.com",
+      "update_url": "https://fromscratchengineer.github.io/stools/updates.json",
+      "data_collection_permissions": {
+        "required": ["none"],
+        "optional": []
+      }
+    }
+  },
+  "icons": {
+    "48": "assets/icons/stool.svg"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
+  "background": {
+    "scripts": [
+      "background/service_worker.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.nytimes.com/games/wordle/*"
+      ],
+      "css": [
+        "assets/theme.css",
+        "content/core/overlay.css",
+        "content/games/wordle/wordle.css"
+      ],
+      "js": [
+        "content/core/state.js",
+        "content/core/box.js",
+        "content/core/twitch.js",
+        "content/core/index.js",
+        "content/games/wordle/filter.js",
+        "content/games/wordle/suggestions.js",
+        "content/games/wordle/dom.js",
+        "content/games/wordle/index.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://scrandle.com/*"
+      ],
+      "css": [
+        "assets/theme.css",
+        "content/core/overlay.css",
+        "content/games/scrandle/scrandle.css"
+      ],
+      "js": [
+        "content/core/state.js",
+        "content/core/box.js",
+        "content/core/twitch.js",
+        "content/core/index.js",
+        "content/games/scrandle/index.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/emotes/*",
+        "assets/fonts/*"
+      ],
+      "matches": [
+        "*://www.nytimes.com/games/wordle/*",
+        "*://scrandle.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/icons/stool-light.svg",
+      "32": "assets/icons/stool-light.svg"
+    },
+    "theme_icons": [
+      {
+        "light": "assets/icons/stool-light.svg",
+        "dark": "assets/icons/stool.svg",
+        "size": 16
+      },
+      {
+        "light": "assets/icons/stool-light.svg",
+        "dark": "assets/icons/stool.svg",
+        "size": 32
+      }
+    ],
+    "default_title": "Stools"
+  }
+}

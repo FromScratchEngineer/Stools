@@ -1,0 +1,26 @@
+:root {
+  --stools-bg:          #121213;
+  --stools-border:      #3a3a3c;
+  --stools-border-dark: #2a2a2b;
+  --stools-bg-input:    #1a1a1b;
+  --stools-text:        #fff;
+  --stools-text-muted:  #818384;
+  --stools-text-dim:    #555;
+  --stools-text-light:  #ccc;
+  --stools-accent:      #9147ff;
+  --stools-priority:    #b59f3b;
+  --stools-success:     #538d4e;
+
+  --stools-font-family:    'Departure Mono', Arial, sans-serif;
+  --stools-font-size-xs:   10px;
+  --stools-font-size-sm:   11px;
+  --stools-font-size-md:   12px;
+  --stools-font-size-lr:   20px;
+
+  --stools-width:      175px;
+  --stools-radius:     8px;
+  --stools-radius-sm:  4px;
+  --stools-padding:    10px;
+  --stools-shadow:     0 4px 24px rgba(0,0,0,0.7);
+  --stools-shadow-tab: 0 -2px 12px rgba(0,0,0,0.6);
+}
